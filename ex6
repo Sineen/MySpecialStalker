@@ -1,0 +1,106 @@
+In this assignment you will learn:
+
+a. Broadcast Receivers
+
+b. Permissions
+
+c. using Android APIs
+
+
+
+In EX6 you will start to implement "My Special Stalker", an application that sends an automated SMS message each time the user is making an outgoing call.
+
+
+
+
+
+specifications:
+
+Your app will need to have the following permissions:
+
+android.permission.READ_PHONE_STATE
+android.permission.PROCESS_OUTGOING_CALLS
+android.permission.SEND_SMS
+Notice that some of them are "deangerous" and you will may need to ask them in runtime as well.
+
+
+
+
+In your app there will be a single "settings" screen, and a BroadcastReciver that will listen to "starting outgoing call" events.
+
+
+Regarding the screen:
+Every time the screen is visible to the user, your should make sure that the user has given you all of the required permissions.
+
+If the user didn't give you some or all of them, ask for the permissions you need and don't let the user continue until you have all the permissions.
+
+
+
+In the single screen, after you have got the user's permissions, there will be 2 fields that the user can edit:
+
+1. the number that the SMS will be sent to each time a phone-call will be placed (for example: "0550001122" or "+9723456789"). Starts out empty
+
+2. the pre-defined text that will be sent. Starts out "I'm going to call this number:"
+
+Each one of the fields will be backed up and loaded by a ShraedPreference, to persist the across app launches.
+
+Use a TextWatcher to understand when the user inserted text to the fields.
+
+Additionally to those fields, there will be a TextView.
+
+When some of the fields are still missing, the text view will tell the user that he\she need to insert more information.
+
+When all of the fields are set, the text view will tell the user that the app is ready to send SMS messages.
+
+(If you have a better solution to inform the user about missing info than a simple text view - you are more than welcome to use your solution!)
+
+
+
+In addition to the screen, you will create a broadcast receiver that will listen to "started outgoing call" events.
+
+You will need to:
+
+1. Create a custom class extending BroadcastReceiver.
+
+2. In your manifest define your Broadcast-Receiver-custom-class with an intent filter that filters for the constant "android.intent.action.NEW_OUTGOING_CALL"
+(if you ever need to access this constant from your java code, you can go to it via the constant field Intent.ACTION_NEW_OUTGOING_CALL)
+
+You can use the intent's string extra (get it from the intent with the key Intent.EXTRA_PHONE_NUMBER) to understand the phone number that the user is about to call.
+
+
+
+For this version of the app, when you detect on outgoing call in your broadcast receiver, you should send an automated SMS message to the pre-defined number with the text = {the pre-defined text} + {the outgoing call phone number}.
+
+(for example, if the user is about to call home, the SMS message should look something like this: "I'm going to call this number:026688557").
+
+
+
+Submission:
+
+You should submit the following things:
+
+1. your first and last name, as well as your id number (תעודת זהות)
+
+2. a url-link to a new git repository, located in github, gitlab or huji-cs-git.
+
+
+
+The repository should be public. so I can see your content.
+
+In this repository you should tag a specific commit with the "v0_only_sms" tag.
+
+
+
+When I will go to your repository and look for the commit with that tag, I should find:
+
+1. this commit has been commit before May 25th, 2019 at 23:59.
+
+2. this commit contains all the needed source code to run your app without build errors
+
+3. this commit contains a screenshot file from a launch of your app, on the main folder (a jpg or png file)
+
+5. this commit contains a readme file, on the main folder, in which you promise you have written the code alone.
+
+If you're having trouble with Formulation, you can use this:
+
+"I pledge the highest level of ethical principles in support of academic excellence.  I ensure that all of my work reflects my own abilities and not those of someone else."
