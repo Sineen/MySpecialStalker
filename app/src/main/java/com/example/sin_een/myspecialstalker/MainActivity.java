@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         localMessage = sharedPreferences.getString(SHARED_MSG, "");
 
         if(localMessage.equals("")) {
-            message.setText(String.valueOf(R.string.i_m_going_to_call_this_number));
-            localMessage = String.valueOf(R.string.i_m_going_to_call_this_number);
+            localMessage = "I am going to call this number ";
+            message.setText(localMessage);
         } else {
             message.setText(localMessage);
         }
