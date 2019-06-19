@@ -7,12 +7,83 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Your info!"
+        android:textSize="@android:dimen/app_icon_size"
+        android:textColor="@android:color/holo_purple"
+        app:layout_constraintBottom_toTopOf="@id/phone_numer_id"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/phone_numer_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone number: "
+        android:textSize="30dp"
+        android:textColor="@android:color/primary_text_light"
+        app:layout_constraintBottom_toTopOf="@id/phone_number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"  />
+
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Insert a phone number"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@id/phone_numer_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/please_insert_phone"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Please insert phone number that you want to send sms to!"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintTop_toBottomOf="@id/phone_number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+         />
+
+
+    <TextView
+        android:id="@+id/text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Text to Send: "
+        android:textSize="30dp"
+        android:textColor="@android:color/primary_text_light"
+        app:layout_constraintBottom_toTopOf="@id/text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/please_insert_phone"  />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="I'm going to call this number:"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/text_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/please_insert_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please insert the message you want to send!"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
 
 </android.support.constraint.ConstraintLayout>
