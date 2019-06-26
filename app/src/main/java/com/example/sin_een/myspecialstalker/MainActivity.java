@@ -177,17 +177,11 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean verifyingPermissions(int[] grantResults)
     {
-        return grantResults.length == 3 && grantResults[0] == PERMISSION_GRANTED && grantResults[1] == PERMISSION_GRANTED
+        return grantResults.length == 3
+                && grantResults[0] == PERMISSION_GRANTED
+                && grantResults[1] == PERMISSION_GRANTED
                 && grantResults[2] == PERMISSION_GRANTED;
     }
-
-
-
-
-
-
-
-
 
 
 }
