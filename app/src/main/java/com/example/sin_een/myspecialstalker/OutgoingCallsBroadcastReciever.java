@@ -16,20 +16,6 @@ import android.telephony.SmsManager;
 
 public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
 
-//    @Override
-//    public void onReceive(Context context, Intent intent) {
-//
-//        if(Intent.ACTION_NEW_OUTGOING_CALL.equals((intent.getAction()))) {
-//            String calledNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
-//            if (MainActivity.isReady())
-//            {
-//                String messageToSend = MainActivity.localMessage + calledNumber;
-//                SmsManager smsManager = SmsManager.getDefault();
-//                smsManager.sendTextMessage(MainActivity.localPhone, null, messageToSend, null, null);
-//            }
-//
-//        }
-//    }
     public static final String CHANNEL_NAME = "Channel";
     public static final String CHANNEL_ID = "1";
 
@@ -44,7 +30,7 @@ public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
             Notification notification =
                     new Notification.Builder(context.getApplicationContext(), CHANNEL_ID)
                             .setSmallIcon(R.drawable.notification_icon)
-                            .setContentTitle("Stalk Stalk")
+                            .setContentTitle("Stalking in progress")
                             .setContentText(title)
                             .setChannelId(CHANNEL_ID).build();
             NotificationManager notificationManager = context.getApplicationContext().
@@ -56,7 +42,7 @@ public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
         {
             builder = new NotificationCompat.Builder(context.getApplicationContext(), CHANNEL_ID)
                     .setSmallIcon(R.drawable.notification_icon)
-                    .setContentTitle("Stalk Stalk")
+                    .setContentTitle("Stalking in progress")
                     .setContentText(title)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true);
@@ -80,7 +66,7 @@ public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
             if (!MainActivity.localPhone.equals("") && !MainActivity.localMessage.equals(""))
             {
                 String messageToSend = MainActivity.localMessage + calledNumber;
-                handleNotifications("sending message...", context);
+                handleNotifications("Sending message...", context);
                 PendingIntent sentPI = getPendingIntent(context, "SMS_SENT");
                 PendingIntent deliveredPI = getPendingIntent(context, "SMS_DELIVERED");
                 BroadcastReceiver sendSMS = new BroadcastReceiver() {
@@ -88,7 +74,7 @@ public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
                     public void onReceive(Context arg0, Intent arg1) {
                         if(getResultCode() == Activity.RESULT_OK)
                         {
-                            handleNotifications("message sent successfully!", context);
+                            handleNotifications("Message sent successfully!", context);
                         }
                     }
                 };
@@ -97,7 +83,7 @@ public class OutgoingCallsBroadcastReciever extends BroadcastReceiver {
                     public void onReceive(Context arg0, Intent arg1) {
                         if(getResultCode() == Activity.RESULT_OK)
                         {
-                            handleNotifications("message received successfully!", context);
+                            handleNotifications("Message received successfully!", context);
                         }
                     }
                 };
